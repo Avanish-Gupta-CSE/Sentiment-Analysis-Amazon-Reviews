@@ -1,0 +1,70 @@
+{% from '_formhelpers.html' import render_field %}
+
+<!-- <!doctype html>
+<html>
+    <head>
+        <title>Review Classification</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css')
+            }}">
+    </head>
+    <body>
+        <h3>Your review:</h3>
+        <div>{{ content }}</div>
+        <h3>Prediction:</h3>
+        <div>This review is <strong>{{ prediction }}</strong>
+            (probability: {{ probability }}%).</div>
+        <div id='button'>
+            <form action="/">
+                <input type=submit value='Submit another review'>
+            </form>
+        </div>
+    </body>
+</html> -->
+<!doctype html>
+<html>
+    <head>
+        <title>Sentiment Analysis</title>
+        <link rel="stylesheet" href="{{ url_for('static',
+            filename='styleTwo.css')
+            }}">
+    </head>
+    <body class="container">
+
+
+        <h3 class="container">Your review:</h3>
+        <div>{{ content }}</div>
+        
+        <h3>Prediction:</h3>
+        <!-- <div>This movie review is <strong>{{ prediction }}</strong>
+            (probability: {{ probability }}%).</div> -->
+        <!-- <p>Here, </p> -->
+        <!-- <p> Model-1 --- Logistic Regression </p> -->
+        <!-- <p> Model-2 --- Random Forest Classifier </p> -->
+        <!-- <p> Model-3 --- XG Boost Classifier </p> -->
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th> Model </th>
+                    <th> Prediction </th>
+                    <th> Probability </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+                    <td> Model {{ loop.index }} </td>
+                    <td> {{ result[0] }} </td>
+                    <td> {{ result[1]|round(2)*100 }}% </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div id='button'>
+            <form action="/" class="container">
+                <center><input type=submit value='Submit another review'></center>
+            </form>
+        </div>
+    </body>
+</html>

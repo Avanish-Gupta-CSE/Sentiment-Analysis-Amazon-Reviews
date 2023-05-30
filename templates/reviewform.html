@@ -1,0 +1,29 @@
+{% from '_formhelpers.html' import render_field %}
+
+<!doctype html>
+<html>
+    <head>
+        <title>Review Classification</title>
+        <link rel="stylesheet" href="{{ url_for('static',
+            filename='styleOne.css')}}">
+    </head>
+    <body>
+
+
+        <h2 class="container">😄 Sentiment Analysis 😔</h2>
+
+        <form method=post action="/results" class="container">
+            <h3>Enter your review:</h3>
+            <dl>
+                {{ render_field(form.review, cols='30', rows='10',
+                placeholder='Write your review...') }}
+            </dl>
+            <div>
+                <input type=submit value='Submit review'
+                    name='submit_btn'>
+            </div>
+        </form>
+
+
+    </body>
+</html>
